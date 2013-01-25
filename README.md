@@ -108,6 +108,30 @@ hiddenLayers: [3, 4]
 
 By default `brain` uses one hidden layer with size proportionate to the size of the input array.
 
+# AutoEncoder
+
+This modification of the [original brain project](http://github.com/harthur/brain/) also provides an AutoEncoder
+`Autoencoder()` is used to create and and train an autoencoder. The training method is the same as described above, care must be take to make sure the input and output are the same.
+
+```javascript
+var auto = new Autoencoder({
+   hiddenLayers: [10],
+   learningRate: 0.6
+});
+```
+
+Additional options can be specified to train a Sparse Autoencoder. (As of now, the sparse autoencoder fails to converge)
+
+```javascript
+var auto = new Autoencoder({
+   hiddenLayers: [10],
+   learningRate: 0.6,
+   makeSparse: true,
+   sparsityParameter: 0.05,
+   sparsityPenalty: 0.1
+});
+```
+
 #### learningRate
 The learning rate is a parameter that influences how quickly the network trains. It's a number from `0` to `1`. If the learning rate is close to `0` it will take longer to train. If the learning rate is closer to `1` it will train faster but it's in danger of training to a local minimum and performing badly on new data. The default learning rate is `0.3`.
 
